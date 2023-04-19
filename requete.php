@@ -1,7 +1,7 @@
 <?php
 // Afficher les sessions de formation à venir qui ne se chevauchent pas avec une session donnée
-SELECT *
-FROM sessions
+
+SELECT * FROM sessions
 WHERE date_debut > NOW()
 AND id_session <> <id_session>
 AND date_debut > (SELECT date_fin FROM sessions WHERE id_session = <id_session>)
@@ -14,8 +14,8 @@ AND date_debut > (SELECT date_fin FROM sessions WHERE id_session = <id_session>)
 
 
 // Afficher les sessions de formation à venir avec des places encore disponibles :
-    SELECT *
-    FROM sessions
+    
+    SELECT * FROM sessions
     WHERE date_debut > NOW()
     AND nombre_places > (SELECT COUNT(*) FROM inscriptions WHERE id_session = sessions.id_session)
     
@@ -41,13 +41,13 @@ ORDER BY date_debut DESC
 
 
 // Afficher la liste des sessions qui sont affectées à un formateur donné, triées par date de débutSELECT s.*
-FROM sessions s
+SELECT * FROM sessions s
 WHERE s.id_formateur = :id_formateur
 ORDER BY s.date_debut
 
 
 // Afficher la liste des apprenants d'une session donnée d'un formateur donnéSELECT a.*
-FROM apprenants a
+SELECT * FROM apprenants a
 INNER JOIN inscriptions i ON a.id_apprenant = i.id_apprenant
 WHERE i.id_session = :id_session AND i.id_formateur = :id_formateur
 
@@ -55,7 +55,7 @@ Afficher l'historique des sessions de formation d'un formateur donnéSELECT s.*
 FROM sessions s
 WHERE s.id_formateur = :id_formateur
 // Afficher les formateurs qui sont disponibles entre 2 datesSELECT f.*
-FROM formateurs f
+SELECT * FROM formateurs f
 WHERE NOT EXISTS (
     SELECT 1
     FROM sessions s
