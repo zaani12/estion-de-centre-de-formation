@@ -52,7 +52,7 @@ INNER JOIN inscriptions i ON a.id_apprenant = i.id_apprenant
 WHERE i.id_session = :id_session AND i.id_formateur = :id_formateur
 
 Afficher l'historique des sessions de formation d'un formateur donnéSELECT s.*
-FROM sessions s
+SELECT * FROM sessions s
 WHERE s.id_formateur = :id_formateur
 // Afficher les formateurs qui sont disponibles entre 2 datesSELECT f.*
 SELECT * FROM formateurs f
