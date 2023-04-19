@@ -69,19 +69,19 @@ WHERE NOT EXISTS (
 
 
 // Afficher toutes les sessions d'une formation donnée
- SELECT *
-FROM sessions
+ 
+SELECT * FROM sessions
 WHERE id_formation = :id_formation
 
 // Afficher le nombre total des sessions par catégorie de formationSELECT c.libelle, COUNT(s.id_session) as nombre_sessions
-FROM categories_formation c
+SELECT * FROM categories_formation c
 LEFT JOIN formations f ON c.id_categorie = f.id_categorie
 LEFT JOIN sessions s ON f.id_formation = s.id_formation
 GROUP BY c.libelle
 
 
 // Afficher le nombre total des inscrits par catégorie de formationSELECT c.libelle, COUNT(i.id_inscription) as nombre_inscrits
-FROM categories_formation c
+SELECT * FROM categories_formation c
 LEFT JOIN formations f ON c.id_categorie = f.id_categorie
 LEFT JOIN sessions s ON f.id_formation = s.id_formation
 LEFT JOIN inscriptions i ON s.id
